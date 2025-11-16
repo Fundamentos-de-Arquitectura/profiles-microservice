@@ -27,7 +27,11 @@ public class ProfilesContextFacadeImpl implements ProfilesContextFacade {
             String city,
             String state,
             String postalCode,
-            String country) {
+            String country,
+            String restaurantName,
+            String restaurantDescription,
+            String restaurantPhone,
+            Long accountId) {
         var createProfileCommand = new CreateProfileCommand(
                 firstName,
                 lastName,
@@ -37,7 +41,11 @@ public class ProfilesContextFacadeImpl implements ProfilesContextFacade {
                 city,
                 state,
                 postalCode,
-                country);
+                country,
+                restaurantName,
+                restaurantDescription,
+                restaurantPhone,
+                accountId);
         var profile = profileCommandService.handle(createProfileCommand);
         return profile.isEmpty() ? Long.valueOf(0L) : profile.get().getId();
     }

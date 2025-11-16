@@ -15,9 +15,13 @@ public interface ProfilesContextFacade {
      * @param state The  state(optional)
      * @param postalCode The postal code
      * @param country The country
+     * @param restaurantName The restaurant name
+     * @param restaurantDescription The restaurant description
+     * @param restaurantPhone The restaurant phone
+     * @param accountId The account ID from IAM service
      * @return The profile ID
      */
-    Long createProfile(String firstName, String lastName, String email, String street, String number, String city, String state, String postalCode, String country);
+    Long createProfile(String firstName, String lastName, String email, String street, String number, String city, String state, String postalCode, String country, String restaurantName, String restaurantDescription, String restaurantPhone, Long accountId);
 
     /**
      * Fetch a profile ID by email
