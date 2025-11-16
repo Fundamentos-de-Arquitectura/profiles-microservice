@@ -9,6 +9,10 @@ public record CreateProfileCommand(
         String city,
         String state,
         String postalCode,
-        String country
+        String country,
+        String restaurantName,
+        String restaurantDescription,
+        String restaurantPhone,
+        Long accountId
 ) {
 }

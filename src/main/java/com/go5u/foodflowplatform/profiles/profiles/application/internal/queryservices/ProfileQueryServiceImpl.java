@@ -3,6 +3,7 @@ package com.go5u.foodflowplatform.profiles.profiles.application.internal.queryse
 
 import com.go5u.foodflowplatform.profiles.profiles.domain.model.aggregates.Profile;
 import com.go5u.foodflowplatform.profiles.profiles.domain.model.queries.GetAllProfilesQuery;
+import com.go5u.foodflowplatform.profiles.profiles.domain.model.queries.GetProfileByAccountIdQuery;
 import com.go5u.foodflowplatform.profiles.profiles.domain.model.queries.GetProfileByEmailQuery;
 import com.go5u.foodflowplatform.profiles.profiles.domain.model.queries.GetProfileByIdQuery;
 import com.go5u.foodflowplatform.profiles.profiles.domain.services.ProfileQueryService;
@@ -38,6 +39,12 @@ public class ProfileQueryServiceImpl implements ProfileQueryService {
     @Override
     public Optional<Profile> handle(GetProfileByEmailQuery query) {
         return profileRepository.findByEmailAddress(query.emailAddress());
+    }
+
+    // inherited javadoc
+    @Override
+    public Optional<Profile> handle(GetProfileByAccountIdQuery query) {
+        return profileRepository.findByAccountId(query.accountId());
     }
 
     // inherited javadoc

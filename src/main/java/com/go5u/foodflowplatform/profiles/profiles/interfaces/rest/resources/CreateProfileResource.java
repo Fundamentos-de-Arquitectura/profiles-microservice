@@ -12,7 +12,11 @@ public record CreateProfileResource(
         String city,
         String state,
         String postalCode,
-        String country) {
+        String country,
+        String restaurantName,
+        String restaurantDescription,
+        String restaurantPhone,
+        Long accountId) {
     /**
      * Validates the resource.
      *
@@ -25,5 +29,7 @@ public record CreateProfileResource(
         if (street == null || street.isBlank()) throw new IllegalArgumentException("Street is required");
         if (city == null || city.isBlank()) throw new IllegalArgumentException("City is required");
         if (state == null || state.isBlank()) throw new IllegalArgumentException("State is required");
+        if (restaurantName == null || restaurantName.isBlank()) throw new IllegalArgumentException("Restaurant name is required");
+        if (accountId == null) throw new IllegalArgumentException("Account ID is required");
     }
 }

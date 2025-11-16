@@ -27,10 +27,26 @@ public class Profile extends AuditableAbstractAggregateRoot<Profile> {
             @AttributeOverride(name = "country", column = @Column(name = "street_address_country"))})
     private StreetAddress streetAddress;
 
-    public Profile(String firstName, String lastName, String email, String street, String number, String city, String state, String postalCode, String country) {
+    @Column(name = "restaurant_name")
+    private String restaurantName;
+
+    @Column(name = "restaurant_description", length = 500)
+    private String restaurantDescription;
+
+    @Column(name = "restaurant_phone")
+    private String restaurantPhone;
+
+    @Column(name = "account_id", unique = true)
+    private Long accountId; // Link to IAM account
+
+    public Profile(String firstName, String lastName, String email, String street, String number, String city, String state, String postalCode, String country, String restaurantName, String restaurantDescription, String restaurantPhone, Long accountId) {
         this.name = new PersonName(firstName, lastName);
         this.emailAddress = new EmailAddress(email);
         this.streetAddress = new StreetAddress(street, number, city, state, postalCode, country);
+        this.restaurantName = restaurantName;
+        this.restaurantDescription = restaurantDescription;
+        this.restaurantPhone = restaurantPhone;
+        this.accountId = accountId;
     }
 
     public Profile() {
@@ -47,7 +63,11 @@ public class Profile extends AuditableAbstractAggregateRoot<Profile> {
                 command.city(),
                 command.state(),
                 command.postalCode(),
-                command.country()
+                command.country(),
+                command.restaurantName(),
+                command.restaurantDescription(),
+                command.restaurantPhone(),
+                command.accountId()
         );
     }
 
@@ -63,6 +83,22 @@ public class Profile extends AuditableAbstractAggregateRoot<Profile> {
         return streetAddress.getStreetAddress();
     }
 
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public String getRestaurantDescription() {
+        return restaurantDescription;
+    }
+
+    public String getRestaurantPhone() {
+        return restaurantPhone;
+    }
+
+    public Long getAccountId() {
+        return accountId;
+    }
+
     public void updateName(String firstName, String lastName) {
       this.name = new PersonName(firstName, lastName);
     }
@@ -73,5 +109,11 @@ public class Profile extends AuditableAbstractAggregateRoot<Profile> {
 
     public void updateStreetAddress(String street, String number, String city, String state, String postalCode, String country) {
         this.streetAddress = new StreetAddress(street, number, city, state, postalCode, country);
+    }
+
+    public void updateRestaurantInfo(String restaurantName, String restaurantDescription, String restaurantPhone) {
+        this.restaurantName = restaurantName;
+        this.restaurantDescription = restaurantDescription;
+        this.restaurantPhone = restaurantPhone;
     }
 }

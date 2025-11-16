@@ -28,4 +28,12 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
      * @return True if the email address exists, otherwise false
      */
     boolean existsByEmailAddress(EmailAddress emailAddress);
+
+    /**
+     * Find a Profile by Account ID
+     *
+     * @param accountId The Account ID from IAM service
+     * @return A {@link Profile} instance if the account ID is valid, otherwise empty
+     */
+    Optional<Profile> findByAccountId(Long accountId);
 }

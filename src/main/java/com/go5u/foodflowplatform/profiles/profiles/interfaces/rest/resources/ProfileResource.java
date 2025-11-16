@@ -7,5 +7,9 @@ public record ProfileResource(
         Long id,
         String fullName,
         String email,
-        String streetAddress) {
+        String streetAddress,
+        String restaurantName,
+        String restaurantDescription,
+        String restaurantPhone,
+        Long accountId) {
 }

@@ -4,6 +4,7 @@ import com.go5u.foodflowplatform.profiles.infrastructure.config.IamClient;
 import com.go5u.foodflowplatform.profiles.infrastructure.config.SubscriptionClient;
 import com.go5u.foodflowplatform.profiles.interfaces.rest.dto.UserWithSubscriptionResponse;
 import com.go5u.foodflowplatform.profiles.profiles.domain.model.queries.GetAllProfilesQuery;
+import com.go5u.foodflowplatform.profiles.profiles.domain.model.queries.GetProfileByAccountIdQuery;
 import com.go5u.foodflowplatform.profiles.profiles.domain.model.queries.GetProfileByIdQuery;
 import com.go5u.foodflowplatform.profiles.profiles.domain.services.ProfileCommandService;
 import com.go5u.foodflowplatform.profiles.profiles.domain.services.ProfileQueryService;
@@ -163,6 +164,25 @@ public class ProfilesController {
         );
 
         return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Get a profile by account ID
+     * @param accountId The account ID from IAM service
+     * @return A {@link ProfileResource} resource for the profile, or a not found response if the profile could not be found.
+     */
+    @GetMapping("/account/{accountId}")
+    @Operation(summary = "Get a profile by account ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Profile found"),
+            @ApiResponse(responseCode = "404", description = "Profile not found")})
+    public ResponseEntity<ProfileResource> getProfileByAccountId(@PathVariable Long accountId) {
+        var getProfileByAccountIdQuery = new GetProfileByAccountIdQuery(accountId);
+        var profile = profileQueryService.handle(getProfileByAccountIdQuery);
+        if (profile.isEmpty()) return ResponseEntity.notFound().build();
+        var profileEntity = profile.get();
+        var profileResource = ProfileResourceFromEntityAssembler.toResourceFromEntity(profileEntity);
+        return ResponseEntity.ok(profileResource);
     }
 
     /**

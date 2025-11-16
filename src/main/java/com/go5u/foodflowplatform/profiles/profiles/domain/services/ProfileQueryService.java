@@ -2,6 +2,7 @@ package com.go5u.foodflowplatform.profiles.profiles.domain.services;
 
 import com.go5u.foodflowplatform.profiles.profiles.domain.model.aggregates.Profile;
 import com.go5u.foodflowplatform.profiles.profiles.domain.model.queries.GetAllProfilesQuery;
+import com.go5u.foodflowplatform.profiles.profiles.domain.model.queries.GetProfileByAccountIdQuery;
 import com.go5u.foodflowplatform.profiles.profiles.domain.model.queries.GetProfileByEmailQuery;
 import com.go5u.foodflowplatform.profiles.profiles.domain.model.queries.GetProfileByIdQuery;
 
@@ -27,6 +28,14 @@ public interface ProfileQueryService {
      * @return A {@link Profile} instance if the query is valid, otherwise empty
      */
     Optional<Profile> handle(GetProfileByEmailQuery query);
+
+    /**
+     * Handle Get Profile By Account ID Query
+     *
+     * @param query The {@link GetProfileByAccountIdQuery} Query
+     * @return A {@link Profile} instance if the query is valid, otherwise empty
+     */
+    Optional<Profile> handle(GetProfileByAccountIdQuery query);
 
     /**
      * Handle Get All Profiles Query

@@ -18,6 +18,10 @@ public class ProfileResourceFromEntityAssembler {
                 entity.getId(),
                 entity.getFullName(),
                 entity.getEmailAddress(),
-                entity.getStreetAddress());
+                entity.getStreetAddress(),
+                entity.getRestaurantName(),
+                entity.getRestaurantDescription(),
+                entity.getRestaurantPhone(),
+                entity.getAccountId());
     }
 }

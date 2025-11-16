@@ -23,6 +23,10 @@ public class CreateProfileCommandFromResourceAssembler {
                 resource.city(),
                 resource.state(),
                 resource.postalCode(),
-                resource.country());
+                resource.country(),
+                resource.restaurantName(),
+                resource.restaurantDescription(),
+                resource.restaurantPhone(),
+                resource.accountId());
     }
 }
