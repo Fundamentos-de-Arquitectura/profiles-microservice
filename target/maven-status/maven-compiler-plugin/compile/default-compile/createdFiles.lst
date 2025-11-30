@@ -1,0 +1,9 @@
+com\go5u\foodflowplatform\profiles\infrastructure\config\IamClient.class
+com\go5u\foodflowplatform\profiles\infrastructure\config\SubscriptionClient.class
+com\go5u\foodflowplatform\profiles\interfaces\rest\dto\UserWithSubscriptionResponse.class
+com\go5u\foodflowplatform\profiles\infrastructure\rest\SwaggerUiRedirectController.class
+com\go5u\foodflowplatform\profiles\ProfilesMicroserviceApplication.class
+com\go5u\foodflowplatform\profiles\infrastructure\config\WebConfig.class
+com\go5u\foodflowplatform\profiles\infrastructure\config\RestClientConfig.class
+com\go5u\foodflowplatform\profiles\interfaces\rest\dto\SubscriptionResponse.class
+com\go5u\foodflowplatform\profiles\interfaces\rest\dto\UserResponse.class
